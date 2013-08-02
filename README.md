@@ -61,3 +61,6 @@ level (1 being the highest)
 
 Changelog
 =========
+v0.0.1
+	* init repo
+	* contains 3 basic functions - so far
