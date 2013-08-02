@@ -8,6 +8,11 @@ CC=gcc
 
 VERSION=0.0.1
 
+DESTDIR=
+PREFIX=$(DESTDIR)/usr
+INSTALLDIR=$(PREFIX)/lib
+HDRINSTALLDIR=$(PREFIX)/include
+
 LIBNAME=libstr
 LIBDIR=lib
 SONAME=$(LIBNAME).so
@@ -20,6 +25,8 @@ IDIR=include
 LFLAGS=-I$(IDIR) -fPIC -shared -Wl,-soname,$(SONAME) #-g #uncomment for debuging with gdb
 CFLAGS=-c #-g #uncomment for debuging with gdb
 
+HEADERS:=$(wildcard $(IDIR)/*.h)
+HDRS=$(patsubst $(IDIR)/%.h, $(HDRINSTALLDIR)/%.h, $(HEADERS))
 SRCS=*.c 
 SRCDIR=src
 SRC:=$(wildcard $(SRCDIR)/$(SRCS))
@@ -53,6 +60,19 @@ setup:
 
 clean: 
 	rm -rf $(OBJDIR)
+
+reinstall: uninstall install clean 
+
+install: all clean
+	mkdir -p $(HDRINSTALLDIR)
+	mkdir -p $(INSTALLDIR) 
+	install $(HEADERS) -t $(HDRINSTALLDIR)
+	install $(LIBDIR)/$(OUTNAME) -t $(INSTALLDIR)
+	ldconfig -n $(INSTALLDIR) 
+
+uninstall: 
+	rm -I $(INSTALLDIR)/$(SONAME)* 
+	rm -I $(HDRS)
 
 $(TSRCDIR)/%.o: $(TSRCDIR)/%.c
 	$(CC) $(LFLAGS) $(CFLAGS) $< -o $@
