@@ -41,6 +41,7 @@ pkg:
 	mkdir -p $(PKGNAME)
 	cp -r  $(PKGLIST) $(PKGNAME)
 	tar -vc -f $(PKGNAME).tar $(PKGNAME)
+	gzip $(PKGNAME).tar 
 	rm -r $(PKGNAME)	
 
 testing: setup $(TOBJ) $(OBJ)
