@@ -22,8 +22,9 @@ PKGNAME=$(LIBNAME)-$(VERSION)
 PKGLIST=Makefile src/ include/ 
 
 IDIR=include
-LFLAGS=-I$(IDIR) -fPIC -shared -Wl,-soname,$(SONAME) #-g #uncomment for debuging with gdb
-CFLAGS=-c #-g #uncomment for debuging with gdb
+LFLAGS=-I$(IDIR) -fPIC -g #uncomment for debuging with gdb
+SHRDFLAGS= -shared -Wl,-soname,$(SONAME)
+CFLAGS=-c -g #uncomment for debuging with gdb
 
 HEADERS:=$(wildcard $(IDIR)/*.h)
 HDRS=$(patsubst $(IDIR)/%.h, $(HDRINSTALLDIR)/%.h, $(HEADERS))
@@ -31,7 +32,7 @@ SRCS=*.c
 SRCDIR=src
 SRC:=$(wildcard $(SRCDIR)/$(SRCS))
 
-TSRCS=
+TSRCS=tst.c
 TSRCDIR=tst
 TSRC=$(patsubst %.c, $(TSRCDIR)/%.c, $(TSRCS))
 TOBJ := $(patsubst $(TSRCDIR)/%.c, $(TSRCDIR)/%.o, $(TSRC))
@@ -42,7 +43,7 @@ OBJ := $(patsubst $(SRCDIR)/%.c, $(OBJDIR)/%.o, $(SRC))
 .PHONY: setup clean pkg
 
 all: setup $(OBJ) $(BINDIR)
-	$(CC) $(LFLAGS) $(OBJ) -o $(LIBDIR)/$(OUTNAME)
+	$(CC) $(LFLAGS) $(SHRDFLAGS) $(OBJ) -o $(LIBDIR)/$(OUTNAME)
 
 pkg:
 	mkdir -p $(PKGNAME)
