@@ -6,7 +6,7 @@ SHELL=/bin/sh
 
 CC=gcc
 
-VERSION=0.0.1
+VERSION=0.0.2
 
 DESTDIR=
 PREFIX=$(DESTDIR)/usr
