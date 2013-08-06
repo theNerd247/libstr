@@ -61,6 +61,10 @@ level (1 being the highest)
 
 Changelog
 =========
+v0.0.2 
+	* moved libstr.h and libstr.c to str.h and str.c respectively
+	* rewrote all functions to follow memory safe methods. The function arguments have changed. See
+	  str.h for more details
 v0.0.1
 	* init repo
 	* contains 3 basic functions - so far
