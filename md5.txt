@@ -1,0 +1,1 @@
+d01dcb15e301533606dcfd3e623683d7  libstr-0.0.2.tar.gz

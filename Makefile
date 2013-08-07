@@ -51,6 +51,7 @@ pkg:
 	tar -vc -f $(PKGNAME).tar $(PKGNAME)
 	gzip $(PKGNAME).tar 
 	rm -r $(PKGNAME)	
+	md5sum $(PKGNAME).tar.gz > md5.txt
 
 testing: setup $(TOBJ) $(OBJ)
 	$(CC) $(LFLAGS) $(TOBJ) $(OBJ) -o $(TSRCDIR)/tst
