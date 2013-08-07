@@ -1,1 +1,2 @@
 d01dcb15e301533606dcfd3e623683d7  libstr-0.0.2.tar.gz
+cbdb39daa5c68c204651ae7e6fbeb376  patches/strinsbuff.patch

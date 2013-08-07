@@ -34,10 +34,14 @@ char* strins(char* haystack, char* needle, size_t index, char* buff)
 
 	if(index < 0 || index > strlen(haystack)) return NULL;
 
-	strncpy(buff, haystack, index);
-	strcpy(buff+index, needle);
-	strcpy(buff+index+strlen(needle), haystack+index);
+	//use our own temp buffer to perform the operation on incase buff == haystack
+	char tmpbuff[strlen(haystack)+strlen(needle)+1];
 
+	strncpy(tmpbuff, haystack, index);
+	strcpy(tmpbuff+index, needle);
+	strcpy(tmpbuff+index+strlen(needle), haystack+index);
+
+	strcpy(buff,tmpbuff);
 	return buff;
 }
 
