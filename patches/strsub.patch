@@ -1,0 +1,29 @@
+*** src/str.c	2013-08-11 22:01:42.935991838 -0400
+--- patches/str.c	2013-08-12 18:04:48.043085171 -0400
+***************
+*** 63,70 ****
+  char* strsub(char* expr, size_t strt, size_t end, char* buff)
+  {
+  	if(!expr || !buff) return NULL;
+  
+! 	strncpy(buff,expr+strt,end-strt+1);
+! 	*(buff+(end-strt+1)) = '\0';
+  	return buff;
+  }
+--- 63,78 ----
+  char* strsub(char* expr, size_t strt, size_t end, char* buff)
+  {
+  	if(!expr || !buff) return NULL;
++ 	
++ 	if(strt < 0 || strt > end || strt > strlen(expr)-1) return NULL;
++ 	if(end < 0|| end < strt || end > strlen(expr)-1) return NULL;
+  
+! 	char tmpbuff[end-strt+2];
+! 	strcpy(tmpbuff,expr);
+! 
+! 	strncpy(tmpbuff,expr+strt,end-strt+1);
+! 	tmpbuff[end-strt+1] = '\0';
+! 	
+! 	strcpy(buff,tmpbuff);
+  	return buff;
+  }
