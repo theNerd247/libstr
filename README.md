@@ -16,6 +16,8 @@ Installing
 Nothing new here, use the self-help way of installing software (for Linux only
 so far) using GNU make.
 
+__NOTICE:__ Arch Linux users! This project can be found on the AUR as libstr.
+
 Configuring
 -----------
 'Keep it simple stupid'. This project will try to remain sane for developers and
@@ -23,6 +25,13 @@ so will not (for now) revert to huge build tools such as automake/autoconf cmake
 or the like. Please edit the Makefile to suit your compile time needs. If you do
 edit the Makefile please commit the change and send a pull request to upstream
 repo (git@github.com:theNerd247/libstr.git).
+
+Patches
+-------
+Patches are found in the patches directory. Patches are optional, however they are
+recomended. Make will not automatically install the patches, for now they should
+be manually installed. For those who are using the Arch Linux AUR PKGBUILD for
+building patches are automatically applied. 
 
 Building
 --------

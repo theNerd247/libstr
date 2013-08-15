@@ -4,3 +4,6 @@ tst/
 #binaries
 lib/
 obj/
+
+#temp files
+*.sw*
