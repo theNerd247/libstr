@@ -1,3 +1,4 @@
 d01dcb15e301533606dcfd3e623683d7  libstr-0.0.2.tar.gz
 cbdb39daa5c68c204651ae7e6fbeb376  patches/strinsbuff.patch
 ad3657c39dda9f3b4df5b8135ed8e79b  patches/strsub.patch
+36bd27b576c906c79efba01205fb7b75  libstr-0.0.2.tar.gz

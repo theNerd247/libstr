@@ -19,7 +19,7 @@ SONAME=$(LIBNAME).so
 OUTNAME=$(LIBNAME).so.$(VERSION)
 
 PKGDIR=pkgs
-PKGNAME=$(PKGDIR)/$(LIBNAME)-$(VERSION)
+PKGNAME=$(LIBNAME)-$(VERSION)
 PKGLIST=Makefile src/ include/ 
 
 IDIR=include
@@ -52,7 +52,8 @@ pkg:
 	tar -vc -f $(PKGNAME).tar $(PKGNAME)
 	gzip $(PKGNAME).tar 
 	rm -r $(PKGNAME)	
-	md5sum $(PKGNAME).tar.gz > md5.txt
+	md5sum $(PKGNAME).tar.gz >> md5.txt
+	mv $(PKGNAME).tar.gz $(PKGDIR)
 
 testing: setup $(TOBJ) $(OBJ)
 	$(CC) $(LFLAGS) $(TOBJ) $(OBJ) -o $(TSRCDIR)/tst

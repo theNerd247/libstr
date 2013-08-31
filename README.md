@@ -29,9 +29,20 @@ repo (git@github.com:theNerd247/libstr.git).
 Patches
 -------
 Patches are found in the patches directory. Patches are optional, however they are
-recomended. Make will not automatically install the patches, for now they should
+recomended. Make will __NOT__ automatically install the patches, for now they should
 be manually installed. For those who are using the Arch Linux AUR PKGBUILD for
-building patches are automatically applied. 
+building patches are automatically applied. Please note that some patches fix
+memory leaks and are not soley optimizations and not installing these could
+result in bad things.
+
+Patches are for the current library version. A new version release will have
+applied all patches included in the previous version. For example: version 3 has
+2 patches (a.patch, b.patch). These will be located in patches/ dir. Then
+version 4 is released in which a.patch and b.patch will no longer exist because
+they will have been applied.
+
+__NOTE:__ If - for whatever reason - patches remain between versions please
+think twice before applying the patches.
 
 Building
 --------
