@@ -33,7 +33,7 @@ SRCS=*.c
 SRCDIR=src
 SRC:=$(wildcard $(SRCDIR)/$(SRCS))
 
-TSRCS=tst.c
+TSRCS=tst2.c
 TSRCDIR=tst
 TSRC=$(patsubst %.c, $(TSRCDIR)/%.c, $(TSRCS))
 TOBJ := $(patsubst $(TSRCDIR)/%.c, $(TSRCDIR)/%.o, $(TSRC))
