@@ -1,23 +1,5 @@
 --- src/str.c	2013-09-16 14:38:49.147925753 -0400
 +++ src/str.c.new	2013-09-16 14:32:25.514582126 -0400
-@@ -34,10 +34,14 @@
- 
- 	if(index < 0 || index > strlen(haystack)) return NULL;
- 
--	strncpy(buff, haystack, index);
--	strcpy(buff+index, needle);
--	strcpy(buff+index+strlen(needle), haystack+index);
-+	//use our own temp buffer to perform the operation on incase buff == haystack
-+	char tmpbuff[strlen(haystack)+strlen(needle)+1];
- 
-+	strncpy(tmpbuff, haystack, index);
-+	strcpy(tmpbuff+index, needle);
-+	strcpy(tmpbuff+index+strlen(needle), haystack+index);
-+
-+	strcpy(buff,tmpbuff);
- 	return buff;
- }
- 
 @@ -59,8 +63,17 @@
  char* strsub(char* expr, size_t strt, size_t end, char* buff)
  {
